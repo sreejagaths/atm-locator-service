@@ -34,6 +34,9 @@
 
   Assumptions made
     Installing a new ATM is very seldom and hence loaded the ATM details on Application Ready and kept them available in the application/cache for further references
+    *Redis cache has been installed already, otherwise install it first and run the application. Please ref https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04 for the steps to install and secure Redis on Ubuntu/Linux; Ref. Steps to run the application for more details in the same lines.
+    *You can remove the caching related annotations from ATMLocatorController.java and AtmLocatorApplication.java if you dont want external caching
+
 
   Enhancements/ToDos
     We can sync the new ATMs details periodically by a scheduled job
@@ -41,6 +44,8 @@
 
 
 3. Steps To Run the Application
+	* Ensure Redis server installed & configured already on the machine where we gonna run this application or Remove the caching related annotations, like @EnableCaching & @Cacheable, from the application, incase external caching not needed; However local/application level caching still be there which doesn’t need any external installation/configuration
+	* Ensure changing the redis server password in application.properties file as per your need. Or you can have the default password 123123 added in your redis.conf file.
   Step 1. Locate the AtmLocatorApplication.java and run it as a standalone java program; You may use the shortcut Shft+Alt+X J to run it on eclipse
         *You can check the Eclipse console for the application status whether started
   Step 2. Open the browser and fire any of the APIs mentioned in the API Details/Documentation section of this doc
